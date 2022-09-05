@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="2" time="14.285" timestamp="2022-09-05T13:18:15.072196" hostname="roshan-ThinkBook-15-G2-ITL">
+    <testcase classname="testcases.test_web.TestWeb" name="test_feedback" time="8.341" />
+        <testcase classname="testcases.test_web.TestWeb" name="test_response" time="5.789" />
+    </testsuite>
+</testsuites>

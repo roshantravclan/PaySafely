@@ -1,19 +1,25 @@
 import pytest
-from selenium import webdriver
+from seleniumwire import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
+
 from utils.utility import LocalStorage
 
 
 @pytest.fixture(scope="class")
 def setUp(request):
     # driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-ssl-errors=yes')
+    options.add_argument('--ignore-certificate-errors')
+    driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
     driver.get("http://s4.mytripkart.in/www.systemthinking.in/")
-    driver.maximize_window()
 
+    driver.maximize_window()
     wait = WebDriverWait(driver, 10)
     storage = LocalStorage(driver)
     storage.set("b2b2cUser",

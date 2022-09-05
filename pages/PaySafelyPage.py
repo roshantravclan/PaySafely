@@ -12,6 +12,7 @@ class PaySafely:
     def open_paysafely_page(self):
         self.driver.get("http://s4.mytripkart.in/www.systemthinking.in/pay")
 
+
     def fill_payment_form(self, name, number, email, amount):
         self.wait.until(EC.presence_of_element_located((By.XPATH, "//input[@id='name']"))).send_keys(name)
         self.wait.until(EC.presence_of_element_located((By.XPATH, "//input[@id='phone']"))).send_keys(number)
@@ -39,6 +40,7 @@ class PaySafely:
         self.wait.until(EC.presence_of_element_located((By.XPATH, "//button[@class ='success']"))).click()
         time.sleep(5)
         self.driver.switch_to.window(self.driver.window_handles[0])
-        lasttext  = self.wait.until(EC.presence_of_element_located((By.XPATH, "//h3"))).text
+        # lasttext = self.wait.until(EC.presence_of_element_located((By.XPATH, "//h3"))).text
 
-        assert "Thank You. Your Payment was Successful!" == self.wait.until(EC.presence_of_element_located((By.XPATH, "//h3"))).text
+        assert "Thank You. Your Payment was Successful!" == self.wait.until(
+            EC.presence_of_element_located((By.XPATH, "//h3"))).text
